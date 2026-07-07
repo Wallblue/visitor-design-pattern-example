@@ -13,7 +13,7 @@ public abstract class Building
 {
   public abstract string Name { get; }
   public abstract BuildingKind Kind { get; }
-  public abstract void Accept(Visitor visitor);
+  public abstract void Accept(IBuildingVisitor visitor);
 }
 
 public class Bank(int moneyInTheSafeAmount) : Building
@@ -22,7 +22,7 @@ public class Bank(int moneyInTheSafeAmount) : Building
   public override BuildingKind Kind => BuildingKind.BANK;
   public int moneyInTheSafeAmount = moneyInTheSafeAmount;
 
-  public override void Accept(Visitor visitor)
+  public override void Accept(IBuildingVisitor visitor)
   {
     visitor.VisitBank(this);
   }
@@ -34,7 +34,7 @@ public class Museum(List<string> artCollection) : Building
   public override BuildingKind Kind => BuildingKind.MUSEUM;
   public List<string> artCollection = artCollection;
 
-  public override void Accept(Visitor visitor)
+  public override void Accept(IBuildingVisitor visitor)
   {
     visitor.VisitMuseum(this);
   }
@@ -46,7 +46,7 @@ public class SwimmingPool(short slideQuantity) : Building
   public override BuildingKind Kind => BuildingKind.SWIMMING_POOL;
   public short slideQuantity = slideQuantity;
 
-  public override void Accept(Visitor visitor)
+  public override void Accept(IBuildingVisitor visitor)
   {
     visitor.VisitSwimmingPool(this);
   }

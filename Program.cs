@@ -3,14 +3,13 @@
 InsuranceVisitor insuranceVisitor = new();
 
 Console.WriteLine("What building do you want to visit ?");
-while (true)
-{
+
+while (true) {
   string line = Console.ReadLine()?.Trim() ?? "";
   if (string.IsNullOrEmpty(line)) continue;
 
   if (BuildingKindHelper.FromString(line, out BuildingKind kind)) {
-    Building building = kind switch
-    {
+    Building building = kind switch {
       BuildingKind.BANK => new Bank(500000),
       BuildingKind.MUSEUM => new Museum(["La Nike de Samothrace", "Les Noces de Cana", "Les Tournesols"]),
       BuildingKind.SWIMMING_POOL => new SwimmingPool(5),
